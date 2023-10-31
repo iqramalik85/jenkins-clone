@@ -8,3 +8,8 @@
       apt:
         name: nginx
         state: present
+        
+     - name: Install PHP
+      apt:
+        name: php
+        state: present
