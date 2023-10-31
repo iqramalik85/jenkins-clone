@@ -1,0 +1,10 @@
+---
+- name: Install and Start Nginx
+  hosts: localhost
+  become: true
+  connection: local
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
