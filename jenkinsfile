@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Run ansible playbook') {
+            steps {
+                echo 'Hello World'
+                git credentialsId: '65c70949-43d6-437d-95b6-dd90802d47b3', url: 'https://github.com/iqramalik85/jenkins-clone.git'
+                 sh "ansible-playbook ansible-nginx.yml -i localhost"
+            }
+        }
+    }
+}
