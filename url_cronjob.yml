@@ -1,14 +1,18 @@
 ---
-- hosts: localhost
+- name: Run script and Create Cron Job
+  hosts: localhost
+  become: yes
   tasks:
-    - name: Run script
-      copy:
-        src: url.sh
-        dest: url.sh
-      become: yes
 
-    - name: cronjobs
+    - name: Run Script
+      command: ./url.sh
+
+    - name: cron-job
       cron:
-        minute: "*/5"
-        job: "/bin/bash url.sh"
-      become: yes
+        name: "MyCronJob"
+        job: "/home/iqra/url.sh"
+        minute: "10"
+        user: iqra 
+
+
+
