@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Copy the URL monitoring script
+      copy:
+        src: monitor_url.sh
+        dest: /path/to/monitor_url.sh
+      become: yes
+
+    - name: Create a cron job to monitor the URL
+      cron:
+        name: "URL Monitoring Cron Job"
+        minute: "*/5"
+        job: "/bin/bash /path/to/monitor_url.sh"
+      become: yes
