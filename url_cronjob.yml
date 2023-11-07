@@ -3,6 +3,11 @@
   hosts: localhost
   become: yes
   tasks:
+    - name: Ensure script is executable
+      file:
+        path: script.sh
+        mode: "0755"
+      become: yes
 
     - name: Run Script
       command: ./url.sh
