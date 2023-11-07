@@ -10,7 +10,7 @@
     - name: cron-job
       cron:
         name: "MyCronJob"
-        job: "/home/iqra/url.sh"
+        job: "url.sh"
         minute: "10"
         user: iqra 
 
