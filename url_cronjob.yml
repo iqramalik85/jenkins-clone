@@ -5,7 +5,7 @@
   tasks:
     - name: Ensure script is executable
       file:
-        path: script.sh
+        path: https://github.com/iqramalik85/jenkins-clone/tree/main/url.sh
         mode: "0755"
       become: yes
 
