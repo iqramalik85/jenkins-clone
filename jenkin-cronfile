@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/iqramalik85/jenkins-clone']]])
+                    sh 'ansible-playbook -i localhost url_cronjob.yml'
+                }
+            }
+        }
+    }
+    post {
+        success {
+            mail to: 'malikayra85@gmail.com', subject: 'Pipeline successfully deployed', body: 'The Jenkins pipeline has run successfully.'
+    }
+  }
+}
